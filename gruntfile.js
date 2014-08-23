@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       compileScripts: {
         expand: true,
         flatten: true,
-        cwd: 'scripts',
+        cwd: 'app/scripts',
         src: '**/**/*.coffee',
         dest: '.tmp/scripts',
         ext: '.js'
@@ -62,5 +62,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jst']);
   grunt.registerTask('compile', ['clean', 'jst', 'coffee', 'uglify']);
-  grunt.registerTask('build', ['clean', 'jst', 'coffee', 'uglify']);
+  grunt.registerTask('build', ['clean', 'jst', 'coffee']);
 }

@@ -62,3 +62,30 @@ table {
   height: 100%;
   width: 100%;
 }
+
+/* landing page */
+
+.city-selection {
+  margin: 20em auto;
+  width: 15em;
+}
+
+.city-selection h1 {
+  font-size: 140%;
+  font-weight: 900;
+  letter-spacing: 0.04rem;
+  margin: 1em auto;
+  width: 8em;
+}
+
+.city-button {
+  background-color: #ACBFE6;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: 0.04rem;
+  outline: none;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+}

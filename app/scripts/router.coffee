@@ -13,7 +13,7 @@ class App.Router extends Backbone.Router
     @appContainer().html(new Landing.View().render())
 
   chicagoIncidents: ->
-    console.log "chicago here"
+    @appContainer().html(new Chicago.MainView(google: google).render().$el)
 
   seattleIncidents: ->
     @appContainer().html(new Seattle.MainView(google: google).render().$el)

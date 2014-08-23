@@ -50,6 +50,22 @@ module.exports = function(grunt) {
                                    ]
         }
       }
+    },
+    connect: {
+      server: {
+        options: {
+          port: 1066,
+          hostname: 'localhost',
+          keepalive: true,
+          open: true,
+          middleware: function (connect) {
+            return [
+              connect.static(require('path').resolve('.tmp')),
+              connect.static(require('path').resolve('app'))
+            ]
+          }
+        }
+      }
     }
 
   });
@@ -59,8 +75,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jst');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('default', ['jst']);
   grunt.registerTask('compile', ['clean', 'jst', 'coffee', 'uglify']);
   grunt.registerTask('build', ['clean', 'jst', 'coffee']);
+  grunt.registerTask('server', ['connect:server']);
 }

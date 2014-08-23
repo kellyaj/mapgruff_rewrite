@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     jst: {
       compile: {
         files: {
-          ".tmp/scripts/templates.js": ["scripts/templates/*.ejs"]
+          ".tmp/scripts/templates.js": ["app/scripts/**/*.ejs"]
         }
       }
     },
@@ -26,7 +26,6 @@ module.exports = function(grunt) {
     coffee: {
       compileScripts: {
         expand: true,
-        flatten: true,
         cwd: 'app/scripts',
         src: '**/**/*.coffee',
         dest: '.tmp/scripts',
@@ -78,7 +77,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('default', ['jst']);
-  grunt.registerTask('compile', ['clean', 'jst', 'coffee', 'uglify']);
+  grunt.registerTask('compile', ['clean', 'jst', 'coffee']);
   grunt.registerTask('build', ['clean', 'jst', 'coffee']);
   grunt.registerTask('server', ['connect:server']);
 }

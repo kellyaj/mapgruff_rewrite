@@ -6,12 +6,14 @@ class App.Router extends Backbone.Router
     "chicago" : "chicagoIncidents"
     "seattle" : "seattleIncidents"
 
+  appContainer: ->
+    $('[data-id=app]')
+
   landing: ->
-    view = new Landing.View()
-    $('[data-id=app]').html(view.render())
+    @appContainer().html(new Landing.View().render())
 
   chicagoIncidents: ->
     console.log "chicago here"
 
   seattleIncidents: ->
-    console.log "seattle"
+    @appContainer().html(new Seattle.MainView(google: google).render())

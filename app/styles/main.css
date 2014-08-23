@@ -49,3 +49,16 @@ table {
 }
 
 /* styles */
+
+.map-container {
+  display: inline-block;
+  height: 800px;
+  width: 60%;
+}
+
+.map-canvas {
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px #888888;
+  height: 100%;
+  width: 100%;
+}

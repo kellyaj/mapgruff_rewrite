@@ -16,4 +16,4 @@ class App.Router extends Backbone.Router
     console.log "chicago here"
 
   seattleIncidents: ->
-    @appContainer().html(new Seattle.MainView(google: google).render())
+    @appContainer().html(new Seattle.MainView(google: google).render().$el)

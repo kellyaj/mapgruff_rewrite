@@ -16,3 +16,11 @@ class Map.Utility
         icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
         position: coordinates
         map: @map
+      infoView = new Shared.InfoView
+        incident: incident
+        map: @map
+        google: @google
+        coordinates: coordinates
+      @google.maps.event.addListener marker, "click", ->
+        $('[data-id=info-container]').html(infoView.render().$el)
+

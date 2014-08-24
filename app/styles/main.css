@@ -104,3 +104,23 @@ table {
   text-decoration: none;
   width: 6.2em;
 }
+
+.info-content {
+  width: 100%;
+}
+
+.info-container {
+  display: inline-block;
+  height: 800px;
+  margin: 0 0 0 2%;
+  padding: 0 10px 0 10px;
+  width: 30%;
+  vertical-align: top;
+}
+
+.pano {
+  border: 1px solid black;
+  height: 50em;
+  margin: 1.25em 0 0 0;
+  width: 100%;
+}

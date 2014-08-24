@@ -53,6 +53,7 @@ table {
 .map-container {
   display: inline-block;
   height: 800px;
+  margin: 0 0 0 3em;
   width: 60%;
 }
 
@@ -88,4 +89,18 @@ table {
   outline: none;
   padding: 0.6rem 1.2rem;
   text-decoration: none;
+}
+
+.landing-button {
+  background-color: #ACBFE6;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  display: block;
+  letter-spacing: 0.04rem;
+  margin: 1em 0 1em 3em;
+  outline: none;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  width: 6.2em;
 }

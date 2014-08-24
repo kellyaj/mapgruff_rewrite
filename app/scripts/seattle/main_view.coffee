@@ -3,6 +3,9 @@ namespace('Seattle')
 class Seattle.MainView extends Backbone.View
   template: JST['app/scripts/seattle/main_view_template.ejs']
 
+  events:
+    "click [data-id=landing-button]" : "backToLanding"
+
   mapOptions: ->
     center: new @options.google.maps.LatLng(47.6097, -122.3331)
     minZoom: 10
@@ -17,3 +20,7 @@ class Seattle.MainView extends Backbone.View
       success: =>
         @mapUtility.displayIncidents()
     @
+
+  backToLanding: ->
+    @$el.empty()
+    Backbone.history.navigate("", {trigger: true})

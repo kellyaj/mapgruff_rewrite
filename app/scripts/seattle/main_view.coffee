@@ -11,5 +11,9 @@ class Seattle.MainView extends Backbone.View
   render: ->
     @$el.html(@template())
     mapCanvas = @$el.find('[data-id=map-canvas]')[0]
-    @mapUtility = new Map.Utility(@options.google, mapCanvas, @mapOptions())
+    incidents = new Seattle.Incidents()
+    @mapUtility = new Map.Utility(@options.google, mapCanvas, @mapOptions(), incidents)
+    incidents.fetch
+      success: =>
+        @mapUtility.displayIncidents()
     @

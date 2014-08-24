@@ -13,7 +13,15 @@ class App.Router extends Backbone.Router
     @appContainer().html(new Landing.View().render())
 
   chicagoIncidents: ->
-    @appContainer().html(new Chicago.MainView(google: google).render().$el)
+    mapOptions =
+      center: new google.maps.LatLng(41.833, -87.732)
+      minZoom: 10
+      zoom: 11
+    @appContainer().html(new Shared.MainView(google: google, mapOptions: mapOptions, incidents: Chicago.Incidents).render().$el)
 
   seattleIncidents: ->
-    @appContainer().html(new Seattle.MainView(google: google).render().$el)
+    mapOptions =
+      center: new google.maps.LatLng(47.6097, -122.3331)
+      minZoom: 10
+      zoom: 11
+    @appContainer().html(new Shared.MainView(google: google, mapOptions: mapOptions, incidents: Seattle.Incidents).render().$el)

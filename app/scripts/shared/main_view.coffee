@@ -10,9 +10,9 @@ class Shared.MainView extends Backbone.View
     @$el.html(@template())
     mapCanvas = @$el.find('[data-id=map-canvas]')[0]
     incidents = new @options.incidents()
-    @mapUtility = new Map.Utility(@options.google, mapCanvas, @options.mapOptions, incidents)
     incidents.fetch
       success: =>
+        @mapUtility = new Map.Utility(@options.google, mapCanvas, @options.mapOptions, incidents)
         @mapUtility.displayIncidents()
     @
 

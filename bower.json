@@ -2,11 +2,12 @@
   "name": "mapgruff",
   "version": "0.0.1",
   "dependencies": {
-    "jquery":         "~1.9.0",
-    "jasmine-jquery": "~1.5.8",
-    "underscore":     "~1.4.3",
     "backbone":       "~1.0.0",
-    "sinon":          "~1.10.3"
+    "chartjs":        "~1.0.1-beta.4",
+    "jasmine-jquery": "~1.5.8",
+    "jquery":         "~1.9.0",
+    "sinon":          "~1.10.3",
+    "underscore":     "~1.4.3"
   },
   "devDependencies": {}
 }

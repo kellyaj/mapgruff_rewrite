@@ -22,5 +22,6 @@ class Shared.MainView extends Backbone.View
     Backbone.history.navigate("", {trigger: true})
 
   showChart: ->
-    chartView = new Shared.ChartView(incidents: @incidents)
+    city = @incidents.models[0].get('city')
+    chartView = new Shared.ChartView(city: city)
     @$el.find('[data-id=chart-container]').html(chartView.render().el)

@@ -6,6 +6,7 @@
     "chartjs":        "~1.0.1-beta.4",
     "jasmine-jquery": "~1.5.8",
     "jquery":         "~1.9.0",
+    "jqueryui":       "~1.11.1",
     "sinon":          "~1.10.3",
     "underscore":     "~1.4.3"
   },

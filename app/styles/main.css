@@ -109,6 +109,19 @@ table {
   background-color: #CDD8F0;
 }
 
+.nav {
+  margin: 1em 0 1em 3em;
+}
+
+.nav-child {
+  display: inline-block;
+}
+
+.content {
+  display: block;
+}
+
+/* info view styles */
 .info-content {
   width: 100%;
 }
@@ -129,14 +142,7 @@ table {
   width: 100%;
 }
 
-.nav {
-  margin: 1em 0 1em 3em;
-}
-
-.nav-child {
-  display: inline-block;
-}
-
-.content {
-  display: block;
+.close-button {
+  cursor: pointer;
+  margin: 0 0 0 98%;
 }

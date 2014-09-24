@@ -5,6 +5,7 @@ class Shared.InfoView extends Backbone.View
 
   events:
     "click [data-id=close-button]": "close"
+    "click [data-id=expand-button]": "expand"
 
   render: ->
     @$el.html(@template(@presenterData()))
@@ -22,3 +23,6 @@ class Shared.InfoView extends Backbone.View
 
   close: ->
     @$el.empty()
+
+  expand: ->
+    @trigger('expandInfoView')

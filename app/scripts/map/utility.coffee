@@ -1,6 +1,6 @@
 namespace('Map')
 
-class Map.Utility
+class Map.Utility extends Backbone.View
 
   constructor: (@google, @mapEl, @mapOptions, @incidents) ->
     @markers = []
@@ -21,6 +21,7 @@ class Map.Utility
         map: @map
         google: @google
         coordinates: coordinates
+      @listenTo(infoView, "expandInfoView", @triggerExpand)
       @google.maps.event.addListener marker, "click", ->
         $('[data-id=info-container]').html(infoView.render().$el)
 
@@ -31,3 +32,5 @@ class Map.Utility
       when "PERSONAL" then "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
       else "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
 
+  triggerExpand: ->
+    @trigger("expandInfoView")

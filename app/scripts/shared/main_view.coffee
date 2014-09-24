@@ -14,6 +14,7 @@ class Shared.MainView extends Backbone.View
     @incidents.fetch
       success: =>
         @mapUtility = new Map.Utility(@options.google, mapCanvas, @options.mapOptions, @incidents)
+        @listenTo(@mapUtility, "expandInfoView", @expandInfoView)
         @mapUtility.displayIncidents()
     @
 
@@ -25,3 +26,6 @@ class Shared.MainView extends Backbone.View
     city = @incidents.models[0].get('city')
     chartView = new Shared.ChartView(city: city)
     @$el.find('[data-id=chart-container]').html(chartView.render().el)
+
+  expandInfoView: ->
+    # manipulate the size of the map container and info view container

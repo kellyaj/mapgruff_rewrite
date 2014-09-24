@@ -91,18 +91,23 @@ table {
   text-decoration: none;
 }
 
-.landing-button {
+.button {
   background-color: #ACBFE6;
   border-radius: 3px;
   border: 1px solid;
   cursor: pointer;
   display: block;
   letter-spacing: 0.04rem;
-  margin: 1em 0 1em 3em;
   outline: none;
   padding: 0.6rem 1.2rem;
   text-decoration: none;
   width: 6.2em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.button:hover {
+  background-color: #CDD8F0;
 }
 
 .info-content {
@@ -123,4 +128,16 @@ table {
   height: 50em;
   margin: 1.25em 0 0 0;
   width: 100%;
+}
+
+.nav {
+  margin: 1em 0 1em 3em;
+}
+
+.nav-child {
+  display: inline-block;
+}
+
+.content {
+  display: block;
 }

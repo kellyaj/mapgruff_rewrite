@@ -5,6 +5,7 @@ class App.Router extends Backbone.Router
     ""        : "landing"
     "chicago" : "chicagoIncidents"
     "seattle" : "seattleIncidents"
+    "test"    : "testIncidents"
 
   appContainer: ->
     $('[data-id=app]')
@@ -25,3 +26,10 @@ class App.Router extends Backbone.Router
       minZoom: 10
       zoom: 11
     @appContainer().html(new Shared.MainView(google: google, mapOptions: mapOptions, incidents: Seattle.Incidents).render().$el)
+
+  testIncidents: ->
+    mapOptions =
+      center: new google.maps.LatLng(47.6097, -122.3331)
+      minZoom: 10
+      zoom: 11
+    @appContainer().html(new Shared.MainView(google: google, mapOptions: mapOptions, incidents: DevUtils.Incidents).render().$el)

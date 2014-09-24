@@ -9,9 +9,12 @@ class Shared.ChartView extends Backbone.View
       success: (data) =>
         @$el.html(@template())
         ctx = @$el.find('#myChart')[0].getContext("2d")
-        chart = new Chart(ctx).Doughnut(JSON.parse(data))
+        chart = new Chart(ctx).Pie(JSON.parse(data), @chartOptions())
     })
     @
+
+  chartOptions: ->
+    animation: false
 
   getChartUrl: ->
     if @options.city == "Chicago IL"

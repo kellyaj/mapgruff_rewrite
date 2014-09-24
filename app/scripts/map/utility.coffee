@@ -13,7 +13,7 @@ class Map.Utility
     _.each @incidents.models, (incident) =>
       coordinates = new google.maps.LatLng(incident.get('latitude'), incident.get('longitude'))
       marker = new google.maps.Marker
-        icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+        icon: @getIcon(incident)
         position: coordinates
         map: @map
       infoView = new Shared.InfoView
@@ -23,4 +23,12 @@ class Map.Utility
         coordinates: coordinates
       @google.maps.event.addListener marker, "click", ->
         $('[data-id=info-container]').html(infoView.render().$el)
+
+  getIcon: (incident) ->
+    category = incident.get('category')
+    switch category
+      when "VIOLENT" then "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+      when "PROPERTY" then "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+      when "PERSONAL" then "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+      else "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
 

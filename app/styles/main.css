@@ -144,5 +144,6 @@ table {
 
 .close-button {
   cursor: pointer;
+  font-size: 180%;
   margin: 0 0 0 98%;
 }

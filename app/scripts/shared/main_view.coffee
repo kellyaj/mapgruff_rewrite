@@ -6,6 +6,7 @@ class Shared.MainView extends Backbone.View
   events:
     "click [data-id=landing-button]" : "backToLanding"
     "click [data-id=show-chart]"     : "showChart"
+    "click [data-id=incident-count]" : "adjustIncidentCount"
 
   render: ->
     @$el.html(@template())
@@ -13,7 +14,9 @@ class Shared.MainView extends Backbone.View
     @incidents = new @options.incidents()
     @incidents.fetch
       success: =>
-        @mapUtility = new Map.Utility(@options.google, mapCanvas, @options.mapOptions, @incidents)
+        @lastFiveHundredIncidents = new @options.incidents(@incidents.slice(0, 500))
+        @lastThousandIncidents = new @options.incidents(@incidents.slice(0, 1000))
+        @mapUtility = new Map.Utility(@options.google, mapCanvas, @options.mapOptions, @lastFiveHundredIncidents)
         @listenTo(@mapUtility, "expandInfoView", @expandInfoView)
         @listenTo(@mapUtility, "collapseInfoView", @collapseInfoView)
         @mapUtility.displayIncidents()
@@ -43,3 +46,21 @@ class Shared.MainView extends Backbone.View
   resizeMaps: (infoView, center) ->
     infoView.renderStreetView()
     @mapUtility.resizeMap(center)
+
+  incidentCountSelector: ->
+    @$("[data-id=incident-count]")
+
+  adjustIncidentCount: ->
+    if @incidentCountSelector().data("count") == 500
+      @adjustSelectorValues(1000)
+      @mapUtility.incidents = @lastThousandIncidents
+      @mapUtility.displayIncidents()
+    else
+      @adjustSelectorValues(500)
+      @mapUtility.incidents = @lastFiveHundredIncidents
+      @mapUtility.displayIncidents()
+
+  adjustSelectorValues: (value) ->
+    @incidentCountSelector().html("Count: #{value}")
+    @incidentCountSelector().data("count", value)
+

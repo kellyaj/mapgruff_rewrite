@@ -3,12 +3,26 @@ namespace('Map')
 class Map.Utility extends Backbone.View
 
   constructor: (@google, @mapEl, @mapOptions, @incidents) ->
+    @markers = []
     @renderMap()
+
+  setAllMarkers: (map) ->
+    _.each @markers, (marker) =>
+      marker.setMap(map)
+
+  clearMarkers: ->
+    _.each @markers, (marker) =>
+      @setAllMarkers(null)
+    @markers = []
+
+  addMarker: (marker) ->
+    @markers.push(marker)
 
   renderMap: ->
     @map = new @google.maps.Map(@mapEl, @mapOptions)
 
   displayIncidents: ->
+    @clearMarkers()
     _.each @incidents.models, (incident) =>
       coordinates = new google.maps.LatLng(incident.get('latitude'), incident.get('longitude'))
       marker = new google.maps.Marker
@@ -22,6 +36,7 @@ class Map.Utility extends Backbone.View
         coordinates: coordinates
       @listenTo(infoView, "expandInfoView", @triggerExpand)
       @listenTo(infoView, "collapseInfoView", @triggerCollapse)
+      @addMarker(marker)
       @google.maps.event.addListener marker, "click", ->
         $('[data-id=info-container]').html(infoView.render().$el)
 

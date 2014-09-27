@@ -55,6 +55,7 @@ table {
   height: 800px;
   margin: 0 0 0 3em;
   width: 60%;
+  position: relative;
 }
 
 .map-canvas {

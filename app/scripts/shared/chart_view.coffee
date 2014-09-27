@@ -8,7 +8,7 @@ class Shared.ChartView extends Backbone.View
       url: @getChartUrl()
       success: (data) =>
         @$el.html(@template())
-        ctx = @$el.find('#myChart')[0].getContext("2d")
+        ctx = @$('#myChart')[0].getContext("2d")
         chart = new Chart(ctx).Pie(JSON.parse(data), @chartOptions())
     })
     @

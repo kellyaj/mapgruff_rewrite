@@ -11,6 +11,7 @@ class Shared.MainView extends Backbone.View
   render: ->
     @$el.html(@template())
     mapCanvas = @$('[data-id=map-canvas]')[0]
+    @startSpinner()
     @incidents = new @options.incidents()
     @incidents.fetch
       success: =>
@@ -19,8 +20,15 @@ class Shared.MainView extends Backbone.View
         @mapUtility = new Map.Utility(@options.google, mapCanvas, @options.mapOptions, @lastFiveHundredIncidents)
         @listenTo(@mapUtility, "expandInfoView", @expandInfoView)
         @listenTo(@mapUtility, "collapseInfoView", @collapseInfoView)
-        @mapUtility.displayIncidents()
+        @mapUtility.displayIncidents(@stopSpinner)
     @
+
+  startSpinner: ->
+    @spinner = new Spinner().spin()
+    @$('[data-id=spinner-container]').append(@spinner.el)
+
+  stopSpinner: =>
+    @spinner.stop()
 
   backToLanding: ->
     @$el.empty()
@@ -54,11 +62,11 @@ class Shared.MainView extends Backbone.View
     if @incidentCountSelector().data("count") == 500
       @adjustSelectorValues(1000)
       @mapUtility.incidents = @lastThousandIncidents
-      @mapUtility.displayIncidents()
+      @mapUtility.displayIncidents(@stopSpinner)
     else
       @adjustSelectorValues(500)
       @mapUtility.incidents = @lastFiveHundredIncidents
-      @mapUtility.displayIncidents()
+      @mapUtility.displayIncidents(@stopSpinner)
 
   adjustSelectorValues: (value) ->
     @incidentCountSelector().html("Count: #{value}")

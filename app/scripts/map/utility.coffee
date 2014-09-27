@@ -21,7 +21,7 @@ class Map.Utility extends Backbone.View
   renderMap: ->
     @map = new @google.maps.Map(@mapEl, @mapOptions)
 
-  displayIncidents: ->
+  displayIncidents: (callback)->
     @clearMarkers()
     _.each @incidents.models, (incident) =>
       coordinates = new google.maps.LatLng(incident.get('latitude'), incident.get('longitude'))
@@ -39,6 +39,7 @@ class Map.Utility extends Backbone.View
       @addMarker(marker)
       @google.maps.event.addListener marker, "click", ->
         $('[data-id=info-container]').html(infoView.render().$el)
+    callback()
 
   getIcon: (incident) ->
     switch incident.get('category')

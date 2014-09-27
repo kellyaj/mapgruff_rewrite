@@ -18,11 +18,30 @@ class Shared.InfoView extends Backbone.View
     'incident_date' : @options.incident.get('date')
 
   renderStreetView: ->
-    panorama = new @options.google.maps.StreetViewPanorama(@$el.find('[data-id=pano]')[0], {position: @options.coordinates, disableDefaultUI: true, clickToGo: true})
+    panorama = new @options.google.maps.StreetViewPanorama(@$('[data-id=pano]')[0], {position: @options.coordinates, disableDefaultUI: true, clickToGo: true})
     @options.map.setStreetView(panorama)
 
   close: ->
     @$el.empty()
 
+  expandButton: ->
+    @$('[data-id=expand-button]')
+
   expand: ->
-    @trigger('expandInfoView')
+    if @isExpanded()
+      @setToCollapsed()
+      @trigger('collapseInfoView', @)
+    else
+      @setToExpanded()
+      @trigger('expandInfoView', @)
+
+  isExpanded: ->
+    @expandButton().data("expanded")
+
+  setToCollapsed: ->
+    @expandButton().data("expanded", false)
+    @expandButton().html("expand")
+
+  setToExpanded: ->
+    @expandButton().data("expanded", true)
+    @expandButton().html("collapse")

@@ -48,12 +48,20 @@ table {
   border-spacing: 0;
 }
 
-/* styles */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,400);
+
+/* main styles */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-image: url('../images/handmadepaper.png');
+}
+
+/* map styles */
 
 .map-container {
   display: inline-block;
   height: 800px;
-  margin: 0 0 0 3em;
   width: 60%;
   position: relative;
 }
@@ -111,20 +119,62 @@ table {
 }
 
 .nav {
-  margin: 1em 0 1em 3em;
+  background-color: #AAAAAA;
 }
 
 .nav-child {
+  color: #333333;
+  cursor: pointer;
   display: inline-block;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 1em;
+}
+
+.nav-child:hover {
+  color: #EEEEEE;
 }
 
 .content {
+  margin: 2em 2em;
   display: block;
 }
 
 /* info view styles */
+
+.secondary-button {
+  background-color: #ACBFE6;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  display: block;
+  letter-spacing: 0.04rem;
+  outline: none;
+  padding: 0.3rem 0.6rem;
+  text-decoration: none;
+  width: 6.2em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.secondary-button:hover {
+  background-color: #CDD8F0;
+}
+
 .info-content {
   width: 100%;
+}
+
+.info-content h1, h2, h3 {
+  padding: 0.5em 0;
+  font-size: 1.2em;
+  letter-spacing: 0.04rem;
+  font-weight: 600;
+}
+
+.expand {
+  margin-bottom: 0.5em;
 }
 
 .info-container {
@@ -136,9 +186,13 @@ table {
   vertical-align: top;
 }
 
+.infoview-area {
+  background-color: #fff;
+}
+
 .pano {
   border: 1px solid black;
-  height: 50em;
+  height: 37.7em;
   margin: 1.25em 0 0 0;
   width: 100%;
 }

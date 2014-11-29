@@ -77,7 +77,7 @@ body {
 
 .city-selection {
   margin: 20em auto;
-  width: 15em;
+  width: 22em;
 }
 
 .city-selection h1 {
@@ -86,6 +86,12 @@ body {
   letter-spacing: 0.04rem;
   margin: 1em auto;
   width: 8em;
+}
+
+.city-select {
+  font-size: 200%;
+  margin: 0 0.5em;
+  display: inline;
 }
 
 .city-button {
@@ -98,24 +104,6 @@ body {
   outline: none;
   padding: 0.6rem 1.2rem;
   text-decoration: none;
-}
-
-.button {
-  background-color: #ACBFE6;
-  border-radius: 3px;
-  border: 1px solid;
-  cursor: pointer;
-  display: block;
-  letter-spacing: 0.04rem;
-  outline: none;
-  padding: 0.6rem 1.2rem;
-  text-decoration: none;
-  width: 6.2em;
-  text-align: center;
-  vertical-align: middle;
-}
-.button:hover {
-  background-color: #CDD8F0;
 }
 
 .nav {
@@ -143,13 +131,12 @@ body {
 
 /* info view styles */
 
-.secondary-button {
+.button {
   color: #333333;
   background-color: #AAAAAA;
   border-radius: 3px;
   border: 1px solid;
   cursor: pointer;
-  display: block;
   font-weight: 700;
   letter-spacing: 0.04rem;
   outline: none;
@@ -160,7 +147,7 @@ body {
   vertical-align: middle;
 }
 
-.secondary-button:hover {
+.button:hover {
   background-color: #CFCFCF;
 }
 
@@ -189,17 +176,19 @@ body {
 }
 
 .infoview-area {
-  background-color: #EDEDED;
+  padding: 0 1.5em 1.5em 1.5em;
+  background-color: #ECECEC;
 }
 
 .pano {
   border: 1px solid black;
-  height: 37.7em;
+  height: 36.3em;
   margin: 1.25em 0 0 0;
   width: 100%;
 }
 
 .close-button {
+  color: #333333;
   cursor: pointer;
   font-size: 180%;
   margin: 0 0 0 98%;

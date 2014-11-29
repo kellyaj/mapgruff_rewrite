@@ -24,20 +24,42 @@ describe 'Shared.InfoView', ->
     "block": "19XX BLOCK OF PIKE PL"
     "category": "PROPERTY"
 
-  createView = ->
+  createView = (data=fakeData) ->
     new Shared.InfoView
       google: google
       map: map
-      incident: new Backbone.Model(fakeData)
+      incident: new Backbone.Model(data)
 
-  it 'renders with the primary type, date, and description of an incident', ->
+  it 'renders with the primary type and description of an incident', ->
     view = createView()
 
     view.render()
 
     expect(view.$el).toContainText(fakeData.primary_type)
     expect(view.$el).toContainText(fakeData.description)
-    expect(view.$el).toContainText(fakeData.date)
+
+  it 'renders the datetime in a human readable format', ->
+    view = createView()
+
+    view.render()
+
+    expect(view.$el).toContainText("08/09/2014 09:28")
+
+  it 'appends the sun icon if the incident was during the daytime', ->
+    view = createView()
+
+    view.render()
+
+    expect(view.$('h3 span')).toHaveClass("icon-sun")
+
+  it 'appends the moon icon if the incident was during the nighttime', ->
+    nightIncident =
+      date: "2014-08-09T23:28:00"
+    view = createView(nightIncident)
+
+    view.render()
+
+    expect(view.$('h3 span')).toHaveClass("icon-moon")
 
   it 'removes all content when the close button is clicked', ->
     view = createView()

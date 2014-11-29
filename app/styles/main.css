@@ -157,9 +157,13 @@ body {
 
 .info-content h1, h2, h3 {
   padding: 0.5em 0;
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: 0.04rem;
   font-weight: 600;
+}
+
+.info-content h3 span {
+  padding: 0 0.3em 0 0;
 }
 
 .expand {
@@ -193,3 +197,17 @@ body {
   font-size: 180%;
   margin: 0 0 0 98%;
 }
+
+/* icons */
+
+.info-view-icon {
+  background-repeat: no-repeat;
+  background-size: 35px 35px;
+  display: inline-block;
+  height: 35px;
+  width: 35px;
+}
+
+.icon-sun { background-image: url('../images/sun.svg'); }
+
+.icon-moon { background-image: url('../images/moon.svg'); }

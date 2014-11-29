@@ -13,9 +13,10 @@ class Shared.InfoView extends Backbone.View
     @
 
   presenterData: ->
-    'primary_type'  : @options.incident.get('primary_type')
-    'description'   : @options.incident.get('description')
-    'incident_date' : @formattedDate()
+    'primary_type'      : @options.incident.get('primary_type')
+    'description'       : @options.incident.get('description')
+    'incident_location' : @options.incident.get('location_description')
+    'incident_date'     : @formattedDate()
 
   formattedDate: ->
     rawDate = @options.incident.get('date')

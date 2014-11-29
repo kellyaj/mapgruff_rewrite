@@ -144,11 +144,13 @@ body {
 /* info view styles */
 
 .secondary-button {
-  background-color: #ACBFE6;
+  color: #333333;
+  background-color: #AAAAAA;
   border-radius: 3px;
   border: 1px solid;
   cursor: pointer;
   display: block;
+  font-weight: 700;
   letter-spacing: 0.04rem;
   outline: none;
   padding: 0.3rem 0.6rem;
@@ -159,7 +161,7 @@ body {
 }
 
 .secondary-button:hover {
-  background-color: #CDD8F0;
+  background-color: #CFCFCF;
 }
 
 .info-content {
@@ -187,7 +189,7 @@ body {
 }
 
 .infoview-area {
-  background-color: #fff;
+  background-color: #EDEDED;
 }
 
 .pano {

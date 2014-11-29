@@ -10,17 +10,20 @@ class Shared.MainView extends Backbone.View
 
   render: ->
     @$el.html(@template())
-    mapCanvas = @$('[data-id=map-canvas]')[0]
+    @mapCanvas = @$('[data-id=map-canvas]')[0]
     @startSpinner()
     @incidents = new @options.incidents()
     @incidents.fetch
       success: =>
         @lastFiveHundredIncidents ?= new @options.incidents(@incidents.slice(0, 500))
-        @mapUtility = new Map.Utility(@options.google, mapCanvas, @options.mapOptions, @lastFiveHundredIncidents)
-        @listenTo(@mapUtility, "expandInfoView", @expandInfoView)
-        @listenTo(@mapUtility, "collapseInfoView", @collapseInfoView)
-        @mapUtility.displayIncidents(@stopSpinner)
+        @displayIncidents()
     @
+
+  displayIncidents: ->
+    @mapUtility = new Map.Utility(@options.google, @mapCanvas, @options.mapOptions, @lastFiveHundredIncidents)
+    @listenTo(@mapUtility, "expandInfoView", @expandInfoView)
+    @listenTo(@mapUtility, "collapseInfoView", @collapseInfoView)
+    @mapUtility.displayIncidents(@stopSpinner)
 
   startSpinner: ->
     @spinner = new Spinner(Shared.SpinnerOptions.MapSpinner).spin()

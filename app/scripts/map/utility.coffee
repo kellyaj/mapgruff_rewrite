@@ -24,8 +24,8 @@ class Map.Utility extends Backbone.View
   displayIncidents: (callback)->
     @clearMarkers()
     _.each @incidents.models, (incident) =>
-      coordinates = new google.maps.LatLng(incident.get('latitude'), incident.get('longitude'))
-      marker = new google.maps.Marker
+      coordinates = new @google.maps.LatLng(incident.get('latitude'), incident.get('longitude'))
+      marker = new @google.maps.Marker
         icon: @getIcon(incident)
         position: coordinates
         map: @map
